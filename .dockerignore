@@ -1,7 +1,11 @@
 .venv
-
 __init__.py
-
 .gitignore
-
 README.md
+venv
+__pycache__
+*.tfstate
+*.tfstate.backup
+infra
+.git
+.github
