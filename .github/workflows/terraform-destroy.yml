@@ -6,6 +6,11 @@ on:
 jobs:
   destroy:
     runs-on: ubuntu-latest
+    env:
+        TF_VAR_container_port: ${{ secrets.TF_VAR_CONTAINER_PORT }}
+        TF_VAR_domain_name: ${{ secrets.TF_VAR_DOMAIN_NAME }}
+        TF_VAR_subdomain: ${{ secrets.TF_VAR_SUBDOMAIN }}
+        TF_VAR_project_name: ${{ secrets.TF_VAR_PROJECT_NAME }}
 
     permissions:
       id-token: write
