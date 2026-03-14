@@ -7,6 +7,7 @@ on:
         paths:
             - "Chat2me/**"
             - Dockerfile
+    workflow_dispatch:        
 
 jobs:
     build:
