@@ -32,6 +32,7 @@ module "ecs" {
     vpc_id = module.vpc.vpc_id
     public_subnet_ids = module.vpc.public_subnet_ids
     repo_url = module.ecr.repo_url
+    image_tag = var.image_tag
     target_group_arn = module.alb.target_group_arn
     alb_sg_id = module.alb.alb_sg_id
     container_port = var.container_port

@@ -25,3 +25,6 @@ variable "repo_url" {
 variable "alb_sg_id" {
     type = string
 }
+ variable "image_tag" {
+    type = string
+ }

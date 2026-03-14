@@ -57,11 +57,11 @@ resource "aws_ecs_task_definition" "task" {
   container_definitions = jsonencode([
     {
       name  = "app"
-      image = var.repo_url
+      image = "${var.repo_url}:${var.image_tag}"
 
       portMappings = [
         {
-          containerPort = 8000
+          containerPort = var.container_port
           protocol      = "tcp"
         }
       ]

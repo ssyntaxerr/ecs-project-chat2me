@@ -1,1 +1,44 @@
-# Deploy
+name: Terraform Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: infra
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: infra
+        run: terraform plan -var="image_tag=${{ github.sha }}"
+
+      - name: Terraform Apply
+        working-directory: infra
+        run: terraform apply -auto-approve -var="image_tag=${{ github.sha }}"
+
+      - name: Wait for ECS service to stabilize
+        run: sleep 60
+
+      - name: Health Check
+        run: |
+          curl -f https://${{ vars.APP_DOMAIN }}/health
