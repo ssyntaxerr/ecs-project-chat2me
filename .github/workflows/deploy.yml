@@ -10,6 +10,11 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+        TF_VAR_container_port: ${{ secrets.TF_VAR_CONTAINER_PORT }}
+        TF_VAR_domain_name: ${{ secrets.TF_VAR_DOMAIN_NAME }}
+        TF_VAR_subject_alternative_names: ${{ secrets.TF_VAR_SUBJECT_ALTERNATIVE_NAMES }}
+        TF_VAR_project_name: ${{ secrets.TF_VAR_PROJECT_NAME }}
 
     permissions:
       id-token: write
