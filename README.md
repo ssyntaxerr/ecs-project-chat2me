@@ -7,6 +7,8 @@ Chat2me is a lightweight real-time web chat application using FastAPI and WebSoc
 
 The project converts a previous desktop socket-based chat client into a browser-accessible web service, allowing multiple users to connect through a web page and exchange messages in real time.
 
+Made by: https://github.com/KareemOkomi
+
 ## Infrastructure 🏢
 ### Architecture 📐
 ![Project Architechture](images/Project-Architechture.png)
