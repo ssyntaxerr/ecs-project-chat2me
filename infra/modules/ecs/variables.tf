@@ -28,3 +28,11 @@ variable "alb_sg_id" {
  variable "image_tag" {
     type = string
  }
+
+ variable "cpu" {
+    type = number 
+ }
+
+ variable "memory" {
+    type = number
+ }

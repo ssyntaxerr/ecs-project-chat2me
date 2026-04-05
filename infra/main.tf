@@ -36,4 +36,6 @@ module "ecs" {
     target_group_arn = module.alb.target_group_arn
     alb_sg_id = module.alb.alb_sg_id
     container_port = var.container_port
+    cpu = var.cpu
+    memory = var.memory
 }
