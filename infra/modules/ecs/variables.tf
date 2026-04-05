@@ -40,3 +40,7 @@ variable "alb_sg_id" {
  variable "aws_region" {
     type = string
  }
+
+ variable "private_subnet_ids" {
+    type = list(string)
+}

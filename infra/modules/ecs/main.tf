@@ -96,9 +96,9 @@ resource "aws_ecs_service" "service" {
   force_new_deployment = true
   
   network_configuration {
-    subnets         = var.public_subnet_ids
+    subnets         = var.private_subnet_ids
     security_groups = [aws_security_group.ecs_sg.id]
-    assign_public_ip = true
+    assign_public_ip = false
   }
   load_balancer {
     target_group_arn = var.target_group_arn
