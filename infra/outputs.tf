@@ -1,4 +1,3 @@
-# VPC outputs
 output "vpc_id" {
   description = "The ID of the VPC"
   value       = module.vpc.vpc_id
@@ -9,19 +8,16 @@ output "public_subnets" {
   value       = module.vpc.public_subnet_ids
 }
 
-# ECR outputs
 output "repo_url" {
   description = "The URL of the ECR repository"
   value       = module.ecr.repo_url
 }
 
-# ACM outputs
 output "certificate_arn" {
   description = "The ARN of the ACM certificate"
   value       = module.acm.certificate_arn
 }
 
-# ALB outputs
 output "alb_arn" {
   description = "The ARN of the Application Load Balancer"
   value       = module.alb.alb_arn
