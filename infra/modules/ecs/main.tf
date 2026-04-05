@@ -77,6 +77,8 @@ resource "aws_ecs_service" "service" {
   launch_type = "FARGATE"
 
   desired_count = 1
+
+  force_new_deployment = true
   
   network_configuration {
     subnets         = var.public_subnet_ids
