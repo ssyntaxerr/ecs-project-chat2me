@@ -36,3 +36,7 @@ variable "alb_sg_id" {
  variable "memory" {
     type = number
  }
+
+ variable "aws_region" {
+    type = string
+ }

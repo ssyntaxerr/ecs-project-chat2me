@@ -44,6 +44,12 @@ resource "aws_iam_role_policy_attachment" "ecs_execution_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
+resource "aws_cloudwatch_log_group" "ecs_logs" {
+  name = "ecs/${var.project_name}"
+  retention_in_days = 7
+}
+
+
 resource "aws_ecs_task_definition" "task" {
   family                   = "${var.project_name}-task"
   requires_compatibilities = ["FARGATE"]
@@ -65,6 +71,15 @@ resource "aws_ecs_task_definition" "task" {
           protocol      = "tcp"
         }
       ]
+
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group = aws_cloudwatch_log_group.name
+          awslogs-region = var.aws_region
+          awslogs-stream-prefix = "ecs"
+        }
+      }
     }
   ])
 }

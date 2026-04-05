@@ -38,4 +38,5 @@ module "ecs" {
     container_port = var.container_port
     cpu = var.cpu
     memory = var.memory
+    aws_region = var.aws_region
 }
